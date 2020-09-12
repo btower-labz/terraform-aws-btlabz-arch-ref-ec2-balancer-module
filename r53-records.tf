@@ -28,9 +28,9 @@ resource "aws_route53_record" "name_alias" {
 }
 
 resource "aws_route53_record" "custom_alias" {
-  count = length(var.alias_list)>0?length(var.alias_list):0
+  count   = length(var.alias_list) > 0 ? length(var.alias_list) : 0
   zone_id = var.zone_id
-  name    = element(var.alias_list,count.index)
+  name    = element(var.alias_list, count.index)
   type    = "A"
   alias {
     name                   = aws_lb.main.dns_name
